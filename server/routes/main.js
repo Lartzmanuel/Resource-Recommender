@@ -2,10 +2,11 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/preference', (req, res) => {
     const locals = {
         title: "Preference",
-        description: "Preference page"
+        description: "Preference page",
+        isPreferencePage: true
     }
     res.render('preference', {locals})
 })
@@ -21,7 +22,8 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res)=> {
     const locals = {
         title: "login",
-        description: "login page"
+        description: "login page",
+        isloginPage: true
     }
     res.render('login', {locals})
 })

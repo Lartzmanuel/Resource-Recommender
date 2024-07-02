@@ -14,11 +14,17 @@
 </head>
 <body>
   
-    <%- include('../partials/header.ejs') %>
+    <% if (!locals.isPreferencePage && !locals.isloginPage) { %>
+        <%- include('../partials/header.ejs') %>
+    <% } %>
+    
     <main>
         <%- body %>
     </main>
-    <%- include('../partials/footer.ejs') %>
- 
+    
+    <% if (!locals.isPreferencePage && !locals.isloginPage) { %>
+        <%- include('../partials/footer.ejs') %>
+    <% } %>
+    
 </body>
 </html>
