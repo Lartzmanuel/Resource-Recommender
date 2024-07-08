@@ -1,11 +1,13 @@
 const { google } = require('googleapis');
 const axios = require('axios');
+require('dotenv').config
 
-API_URL= "https://www.googleapis.com/books/v1/volumes"
-YOUTUBE_API_KEY = "AIzaSyDmUDm_QDeVqtl4VIpvHpULCVWcJQjL2SA"
-GOOGLE_API_KEY = "AIzaSyDmUDm_QDeVqtl4VIpvHpULCVWcJQjL2SA"
-UDEMY_CLIENT_ID = "oZTkkm4fWv8zoGb8gDk1ONVvWSzdLoDVsPaL6Z95"
-UDEMY_CLIENT_SECRET = "94LpEwP1HZ5Jv4CXSho6BywHKMLgUwVno3i8yTo589LkM2J6vOrvRm6s9KDUw3JbTc3Kat6wSYVt5ib8pGAYnaOx4jhzE6csUDOOtQLd0aIuu6xnEJqPdtWcjM7aU1DQ"
+
+YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+UDEMY_CLIENT_ID = process.env.UDEMY_CLIENT_ID;
+UDEMY_CLIENT_SECRET = process.env.UDEMY_CLIENT_SECRET;
+GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+API_URL = process.env.API_URL;
 
 async function getUdemyCourse (topic) {
   try {
