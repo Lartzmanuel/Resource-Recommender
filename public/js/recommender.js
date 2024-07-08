@@ -1,15 +1,17 @@
+require('dotenv').config();
 const { google } = require('googleapis');
 const axios = require('axios');
 
 API_URL= "https://www.googleapis.com/books/v1/volumes"
-YOUTUBE_API_KEY = "AIzaSyDmUDm_QDeVqtl4VIpvHpULCVWcJQjL2SA"
-GOOGLE_API_KEY = "AIzaSyDmUDm_QDeVqtl4VIpvHpULCVWcJQjL2SA"
-UDEMY_CLIENT_ID = "oZTkkm4fWv8zoGb8gDk1ONVvWSzdLoDVsPaL6Z95"
-UDEMY_CLIENT_SECRET = "94LpEwP1HZ5Jv4CXSho6BywHKMLgUwVno3i8yTo589LkM2J6vOrvRm6s9KDUw3JbTc3Kat6wSYVt5ib8pGAYnaOx4jhzE6csUDOOtQLd0aIuu6xnEJqPdtWcjM7aU1DQ"
+
+const googleApiKey = process.env.GOOGLE_API_KEY;
+const youtubeApiKey= process.env.YOUTUBE_API_KEY;
+const udemyClientID = process.env.UDEMY_CLIENT_ID;
+const udemyClientSecret = process.env.UDEMY_CLIENT_SECRET
 
 async function getUdemyCourse (topic) {
   try {
-    const credentials = `${UDEMY_CLIENT_ID}:${UDEMY_CLIENT_SECRET}`;
+    const credentials = `${udemyClientID}:${udemyClientSecret}`;
     const buffer = Buffer.from(credentials, 'utf-8')
     const base64Credentials = buffer.toString('base64')
     // console.log(base64Credentials);
@@ -90,7 +92,7 @@ function parseDuration(duration) {
 async function getYoutubeVideo (topic){
   // const apiServiceName = 'youtube';
 const apiVersion = 'v3';
-const apiKey =  YOUTUBE_API_KEY;
+const apiKey =  youtubeApiKey;
 
 const youtube = google.youtube({
   version: apiVersion,
@@ -158,7 +160,7 @@ async function getGoogleBooks(topic) {
 
 const params = {
   q: topic,
-  key: GOOGLE_API_KEY,
+  key: googleApiKey,
 };
 
 const response = await axios.get(API_URL, { params });
